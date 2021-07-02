@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" [(ngModel)] = "newTask.title">
+        <small id="emailHelp" class="form-text text-muted">Put Title of your task</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" [(ngModel)] = "newTask.description">
+        <small id="emailHelp" class="form-text text-muted">Put Description of your task</small>
+      </div>
+      <button (click)="id==''? createTask():updateTask()" class="btn btn-primary">{{id==''?'create':'update'}}</button>
+    </div>
+  </div>
+ <br>
+ <br>
+ <br>
+
+  <div class="row">
+    <div *ngFor = "let t of task" class="col-md-4 col-sm-4 col-lg-4">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{t.title}}</h5>
+            {{t.description}}
+          </div>
+          <div class="card-body">
+            <a (click)="setUpdate(t)" class="card-link" >Update</a>
+            <a (click)="deleteTask(t._id)" class="card-link">Delete</a>
+          </div>
+        </div>
+        <br>
+    </div>
+  </div>
+</div>
+
