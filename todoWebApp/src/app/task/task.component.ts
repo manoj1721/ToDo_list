@@ -1,4 +1,4 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { analyzeAndValidateNgModules, NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 
@@ -36,9 +36,13 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(id:any){
+    if(confirm("Does you want to delete?")){
     this.taskService.deleteTask(id).subscribe(res=>{
       this.getTask();
-    })
+    })}
+    else{
+
+    }
   }
 
   setUpdate(t:any){

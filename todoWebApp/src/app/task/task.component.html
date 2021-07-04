@@ -1,38 +1,43 @@
-<div class="container">
-  <div class="card">
+<div class="container" >
+  <div class="container" class="card" style="background:transparent; margin-top: 50px; border-radius: 15px; border:3px solid black ">
+   <!--<div class="card" style="background-color: antiquewhite;"> -->
     <div class="card-body">
       <div class="mb-3">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" [(ngModel)] = "newTask.title">
-        <small id="emailHelp" class="form-text text-muted">Put Title of your task</small>
+        <label for="title"><b>Title</b></label>
+        <div style="border: 2px solid black;">
+          <input type="text" class="form-control" id="title" [(ngModel)] = "newTask.title"  ng-required ="true" ></div>
+          <small id="emailHelp" class="form-text text-muted">Put Title of your task</small>
       </div>
-
       <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" [(ngModel)] = "newTask.description">
+        <label for="description" class="form-label"><b>Description</b></label>
+        <div style="border: 2px solid black;">
+        <input type="text" class="form-control" id="description" [(ngModel)] = "newTask.description"></div>
         <small id="emailHelp" class="form-text text-muted">Put Description of your task</small>
       </div>
-      <button (click)="id==''? createTask():updateTask()" class="btn btn-primary">{{id==''?'create':'update'}}</button>
+      <button (click)="id==''? createTask():updateTask()" class="btn btn-primary">{{id==''?'Create':'Update'}}</button>
     </div>
+<br>
+<br>
+<br>
   </div>
- <br>
- <br>
- <br>
+      <div class="row" style="margin-top: 70px;">
+        <div *ngFor = "let t of task" class="col-md-4 col-sm-4 col-lg-4">
+          <div class="card" style="margin-top: 50px; background:transparent; border-radius:15px; border:3px solid black">
+              <div class="card-body">
+                <h4 class="card-title"><b>{{t.title}}</b>
+                </h4>
+                <div>{{t.description}}</div>
+              </div>
+              <div class="card-body">
+                <button (click)="setUpdate(t)" class="card-link" class="p-2 mb-1 btn btn-primary text-white" style="margin-right:63%;" >Update</button>
+                <button (click)="deleteTask(t._id)" class="card-link" class="p-2 mb-1 btn btn-primary text-white">Delete</button>
+              </div>
+            </div>
+      </div>
 
-  <div class="row">
-    <div *ngFor = "let t of task" class="col-md-4 col-sm-4 col-lg-4">
-      <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{t.title}}</h5>
-            {{t.description}}
-          </div>
-          <div class="card-body">
-            <a (click)="setUpdate(t)" class="card-link" >Update</a>
-            <a (click)="deleteTask(t._id)" class="card-link">Delete</a>
-          </div>
-        </div>
-        <br>
     </div>
-  </div>
 </div>
+
+
+
 
